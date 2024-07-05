@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
+import { TableType } from '../../enum/table-types.enum';
 
 @Component({
   selector: 'app-player-registration',
@@ -8,21 +9,32 @@ import { PlayerService } from '../../services/player.service';
 })
 export class PlayerRegistrationComponent {
   playerName: string = '';
-  players = this.playerService.getPlayers();
   tables: any[] = [];
+  tableOptions: TableType[] = [];
 
   constructor(private playerService: PlayerService) {}
 
   registerPlayer() {
-    if (this.playerName.trim()) {
-      const newPlayer = this.playerService.addPlayer(this.playerName.trim());
-      console.log('Player registered', newPlayer);
-      this.playerName = '';
-    }
+    this.playerService.addPlayer(this.playerName);
+    this.playerName = '';
   }
 
   divideIntoTables() {
-    this.tables = this.playerService.dividePlayersIntoTables();
-    console.log('Players divided into tables', this.tables);
+    const result = this.playerService.divideIntoTables();
+    this.tables = result.tables;
+    this.tableOptions = result.tableOptions;
+  }
+
+  setTableOption(option: TableType) {
+    this.playerService.setTableOption(option);
+    this.tables = this.playerService.getTables();
+  }
+
+  get players() {
+    return this.playerService.getPlayers();
+  }
+
+  get playerCount() {
+    return this.players.length;
   }
 }
