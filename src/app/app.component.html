@@ -1,8 +1,8 @@
-<div class="container mt-5">
-  <h1 class="text-center mb-4">Commander Score Tracker</h1>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid mt-5">
+  <h1 class="text-center mb-4">Kommander</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Menu</a>
+      <a class="navbar-brand" href="#">Kommander</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -15,26 +15,46 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/player-registration"
+            <a
+              class="nav-link"
+              routerLink="/player-registration"
+              routerLinkActive="active"
               >Player Registration</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/table-management"
+            <a
+              class="nav-link"
+              routerLink="/table-management"
+              routerLinkActive="active"
               >Table Management</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/score-tracking">Score Tracking</a>
+            <a
+              class="nav-link"
+              routerLink="/score-tracking"
+              routerLinkActive="active"
+              >Score Tracking</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/match-history">Match History</a>
+            <a
+              class="nav-link"
+              routerLink="/match-history"
+              routerLinkActive="active"
+              >Match History</a
+            >
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <router-outlet></router-outlet>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
