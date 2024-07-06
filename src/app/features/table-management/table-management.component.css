@@ -44,3 +44,8 @@
 .right-0 {
   right: 10px;
 }
+
+.button-dice {
+  background-color: #ffc857 !important;
+  color: #3e4a61 !important;
+}

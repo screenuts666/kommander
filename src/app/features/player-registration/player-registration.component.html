@@ -17,40 +17,54 @@
                   name="playerName"
                   class="form-control"
                   required
-                  autocomplete="off"
+                  autocomplete="false"
                 />
               </div>
               <button type="submit" class="btn btn-primary align-self-end">
                 Register
               </button>
             </form>
-            <h3 class="mt-4 text-center">Players List ({{ playerCount }})</h3>
+
             <div class="d-flex justify-content-center mt-3">
-              <button
-                (click)="divideIntoTables()"
-                class="btn btn-secondary"
-                [disabled]="playerCount < 3"
-                style="
-                  background-color: #4caf50;
-                  border-color: #4caf50;
-                  color: #ffffff;
-                "
-              >
-                Divide into Tables
+              <button (click)="getPlayerMock()" class="btn btn-danger">
+                Mock Players
               </button>
             </div>
+            <div *ngIf="playerCount">
+              <h3 class="mt-4 text-center">Players List ({{ playerCount }})</h3>
+              <div class="d-flex justify-content-center mt-3">
+                <button
+                  (click)="divideIntoTables()"
+                  class="btn btn-secondary"
+                  [disabled]="playerCount < 3"
+                  style="
+                    background-color: #4caf50;
+                    border-color: #4caf50;
+                    color: #ffffff;
+                  "
+                >
+                  Divide into Tables
+                </button>
+              </div>
 
-            <div class="row mt-3">
-              <div
-                class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"
-                *ngFor="let player of players; let i = index"
-              >
-                <app-card
-                  [title]="player.name"
-                  [image]="player.image"
-                  [showDelete]="true"
-                  (delete)="deletePlayer(i)"
-                ></app-card>
+              <div class="row mt-3">
+                <div
+                  class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3"
+                  *ngFor="let player of players; let i = index"
+                >
+                  <div class="card h-100">
+                    <div class="card-body text-center position-relative">
+                      <button
+                        class="btn btn-danger btn-sm position-absolute top-0 right-0"
+                        (click)="deletePlayer(i)"
+                      >
+                        X
+                      </button>
+                      <h5 class="card-title">{{ player.name }}</h5>
+                      <div class="emoji">{{ player.image }}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

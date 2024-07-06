@@ -12,6 +12,19 @@ export class PlayerRegistrationComponent {
 
   constructor(private playerService: PlayerService) {}
 
+  // TODO remove
+  getPlayerMock(): void {
+    const mockPlayerList = [
+      'Jack',
+      'Pernice',
+      'Cosma',
+      'Giuseppe',
+      'Thomas',
+      'Jacopo',
+    ];
+    mockPlayerList.map((ele) => this.playerService.addPlayer(ele));
+  }
+
   registerPlayer() {
     if (this.playerName.trim()) {
       this.playerService.addPlayer(this.playerName);
