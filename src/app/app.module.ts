@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { TableManagementComponent } from './features/table-management/table-management.component';
 import { ScoreTrackingComponent } from './features/score-tracking/score-tracking.component';
 import { MatchHistoryComponent } from './features/match-history/match-history.component';
+import { CardComponent } from './shared/card/card.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatchHistoryComponent } from './features/match-history/match-history.co
     TableManagementComponent,
     ScoreTrackingComponent,
     MatchHistoryComponent,
+    CardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

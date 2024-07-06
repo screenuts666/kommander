@@ -9,7 +9,6 @@ import { TableType } from '../../enum/table-types.enum';
 })
 export class TableManagementComponent {
   constructor(private playerService: PlayerService) {}
-
   setTableOption(option: TableType) {
     this.playerService.setTableOption(option);
   }
@@ -25,6 +24,4 @@ export class TableManagementComponent {
   get tableOptions() {
     return this.playerService.getTableOptions();
   }
-
-
 }

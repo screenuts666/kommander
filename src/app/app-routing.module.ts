@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PlayerRegistrationComponent } from './features/player-registration/player-registration.component';
-import { TableManagementComponent } from './features/table-management/table-management.component';
 
 const routes: Routes = [
   { path: 'player-registration', component: PlayerRegistrationComponent },

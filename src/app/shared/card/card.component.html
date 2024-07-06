@@ -1,0 +1,20 @@
+<div class="card h-100">
+  <div class="card-body text-center position-relative">
+    <button
+      *ngIf="showDelete"
+      class="btn btn-danger btn-sm position-absolute top-0 right-0"
+      (click)="deletePlayer()"
+    >
+      X
+    </button>
+    <h5 class="card-title">{{ title }}</h5>
+    <div class="emoji">{{ image }}</div>
+    <span
+      *ngIf="roll"
+      [ngClass]="{ 'badge-dice-roll-max': isMaxRoll }"
+      class="badge badge-dice-roll position-absolute bottom-0 right-0"
+    >
+      Rolled: {{ roll }}
+    </span>
+  </div>
+</div>

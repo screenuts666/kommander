@@ -23,16 +23,20 @@
             Roll d20
           </button>
         </div>
-        <ul class="list-group list-group-flush">
-          <li
-            *ngFor="let player of table.players"
-            class="list-group-item d-flex justify-content-between align-items-center"
+        <div class="row mt-3">
+          <div
+            class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"
+            *ngFor="let player of table.players; let j = index"
           >
-            Seat {{ player.seatNumber }}: {{ player.name }}
-            <span class="emoji">{{ player.image }}</span>
-            <span *ngIf="player.roll">Rolled: {{ player.roll }}</span>
-          </li>
-        </ul>
+            <app-card
+              [title]="player.name"
+              [image]="player.image"
+              [roll]="player.roll || null"
+              [maxRoll]="table.maxRoll || null"
+              [showDelete]="false"
+            ></app-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>

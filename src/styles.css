@@ -66,3 +66,66 @@ h1 {
   background-color: #ffffff;
   border: none;
 }
+
+.emoji {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+.card-header {
+  background-color: #3e4a61;
+  color: #ffffff;
+}
+
+.player-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  position: relative;
+  padding: 15px;
+}
+
+.badge-primary {
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 0.8rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+  color: #ffffff;
+  font-size: 0.8rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-title {
+  margin-bottom: 15px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.top-0 {
+  top: 10px;
+}
+
+.right-0 {
+  right: 10px;
+}
+
+.bottom-0 {
+  bottom: 10px;
+}
+
+.right-0 {
+  right: 10px;
+}

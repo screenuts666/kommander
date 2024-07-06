@@ -13,6 +13,7 @@ interface Table {
   players: Player[];
   type?: TableType;
   rolled?: boolean;
+  maxRoll?: number | null;
 }
 
 @Injectable({
@@ -146,6 +147,11 @@ export class PlayerService {
         player.roll = Math.floor(Math.random() * 20) + 1;
       });
       table.rolled = true;
+
+      // Determina il massimo valore dei dadi per il tavolo
+      table.maxRoll = Math.max(
+        ...table.players.map((player) => player.roll || 0)
+      );
     }
   }
 
