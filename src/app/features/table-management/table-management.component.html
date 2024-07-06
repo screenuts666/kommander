@@ -11,7 +11,7 @@
 <div *ngIf="tables.length > 0" class="mt-5">
   <div *ngFor="let table of tables; let i = index">
     <div *ngIf="table.type === 'Emperor'; else standardTable">
-      <div class="card">
+      <div class="card p-4">
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >
@@ -30,111 +30,79 @@
                 <h6 class="text-center">Team 1</h6>
                 <div class="row">
                   <div class="col-12 col-sm-4">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">Lt Tower</div>
-                      <div class="card-body text-center mb-3">
-                        <app-card
-                          *ngFor="
-                            let player of table.teams?.leftTower?.slice(0, 1)
-                          "
-                          [title]="player.name"
-                          [image]="player.image"
-                          [roll]="player.roll || null"
-                          [maxRoll]="table.maxRoll || null"
-                          [showDelete]="false"
-                        ></app-card>
-                      </div>
-                    </div>
+                    <app-card
+                      *ngFor="let player of table.teams?.leftTower?.slice(0, 1)"
+                      [title]="player.name"
+                      [image]="player.image"
+                      [roll]="player.roll || null"
+                      [maxRoll]="table.maxRoll || null"
+                      [showDelete]="false"
+                      role="Lt Tower"
+                    ></app-card>
                   </div>
                   <div class="col-12 col-sm-4">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">Emperor</div>
-                      <div class="card-body text-center mb-3">
-                        <app-card
-                          *ngFor="
-                            let player of table.teams?.emperor?.slice(0, 1)
-                          "
-                          [title]="player.name"
-                          [image]="player.image"
-                          [roll]="player.roll || null"
-                          [maxRoll]="table.maxRoll || null"
-                          [showDelete]="false"
-                        ></app-card>
-                      </div>
-                    </div>
+                    <app-card
+                      *ngFor="let player of table.teams?.emperor?.slice(0, 1)"
+                      [title]="player.name"
+                      [image]="player.image"
+                      [roll]="player.roll || null"
+                      [maxRoll]="table.maxRoll || null"
+                      [showDelete]="false"
+                      role="Emperor"
+                    ></app-card>
                   </div>
                   <div class="col-12 col-sm-4">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">Rt Tower</div>
-                      <div class="card-body text-center mb-3">
-                        <app-card
-                          *ngFor="
-                            let player of table.teams?.rightTower?.slice(0, 1)
-                          "
-                          [title]="player.name"
-                          [image]="player.image"
-                          [roll]="player.roll || null"
-                          [maxRoll]="table.maxRoll || null"
-                          [showDelete]="false"
-                        ></app-card>
-                      </div>
-                    </div>
+                    <app-card
+                      *ngFor="
+                        let player of table.teams?.rightTower?.slice(0, 1)
+                      "
+                      [title]="player.name"
+                      [image]="player.image"
+                      [roll]="player.roll || null"
+                      [maxRoll]="table.maxRoll || null"
+                      [showDelete]="false"
+                      role="Rt Tower"
+                    ></app-card>
                   </div>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 mt-3">
                 <h6 class="text-center">Team 2</h6>
                 <div class="row">
                   <div class="col-12 col-sm-4">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">Lt Tower</div>
-                      <div class="card-body text-center mb-3">
-                        <app-card
-                          *ngFor="
-                            let player of table.teams?.leftTower?.slice(1, 2)
-                          "
-                          [title]="player.name"
-                          [image]="player.image"
-                          [roll]="player.roll || null"
-                          [maxRoll]="table.maxRoll || null"
-                          [showDelete]="false"
-                        ></app-card>
-                      </div>
-                    </div>
+                    <app-card
+                      *ngFor="let player of table.teams?.leftTower?.slice(1, 2)"
+                      [title]="player.name"
+                      [image]="player.image"
+                      [roll]="player.roll || null"
+                      [maxRoll]="table.maxRoll || null"
+                      [showDelete]="false"
+                      role="Lt Tower"
+                    ></app-card>
                   </div>
                   <div class="col-12 col-sm-4">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">Emperor</div>
-                      <div class="card-body text-center mb-3">
-                        <app-card
-                          *ngFor="
-                            let player of table.teams?.emperor?.slice(1, 2)
-                          "
-                          [title]="player.name"
-                          [image]="player.image"
-                          [roll]="player.roll || null"
-                          [maxRoll]="table.maxRoll || null"
-                          [showDelete]="false"
-                        ></app-card>
-                      </div>
-                    </div>
+                    <app-card
+                      *ngFor="let player of table.teams?.emperor?.slice(1, 2)"
+                      [title]="player.name"
+                      [image]="player.image"
+                      [roll]="player.roll || null"
+                      [maxRoll]="table.maxRoll || null"
+                      [showDelete]="false"
+                      role="Emperor"
+                    ></app-card>
                   </div>
                   <div class="col-12 col-sm-4">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">Rt Tower</div>
-                      <div class="card-body text-center mb-3">
-                        <app-card
-                          *ngFor="
-                            let player of table.teams?.rightTower?.slice(1, 2)
-                          "
-                          [title]="player.name"
-                          [image]="player.image"
-                          [roll]="player.roll || null"
-                          [maxRoll]="table.maxRoll || null"
-                          [showDelete]="false"
-                        ></app-card>
-                      </div>
-                    </div>
+                    <app-card
+                      *ngFor="
+                        let player of table.teams?.rightTower?.slice(1, 2)
+                      "
+                      [title]="player.name"
+                      [image]="player.image"
+                      [roll]="player.roll || null"
+                      [maxRoll]="table.maxRoll || null"
+                      [showDelete]="false"
+                      role="Rt Tower"
+                    ></app-card>
                   </div>
                 </div>
               </div>
@@ -144,7 +112,7 @@
       </div>
     </div>
     <ng-template #standardTable>
-      <div class="card">
+      <div class="card p-4">
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >

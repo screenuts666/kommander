@@ -9,12 +9,13 @@
     </button>
     <h5 class="card-title">{{ title }}</h5>
     <div class="emoji">{{ image }}</div>
-    <span
-      *ngIf="roll"
-      [ngClass]="{ 'badge-dice-roll-max': isMaxRoll }"
-      class="badge badge-dice-roll position-absolute bottom-0 right-0"
+    <div class="mt-2">{{ role }}</div>
+    <div
+      *ngIf="roll !== null"
+      class="badge-dice-roll"
+      [class.badge-dice-roll-max]="isMaxRoll"
     >
       Rolled: {{ roll }}
-    </span>
+    </div>
   </div>
 </div>

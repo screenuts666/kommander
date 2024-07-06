@@ -11,6 +11,8 @@ export class CardComponent implements OnInit {
   @Input() roll: number | null = null;
   @Input() showDelete: boolean = false;
   @Input() maxRoll: number | null = null;
+  @Input() role!: string;
+
   @Output() delete = new EventEmitter<void>();
 
   isMaxRoll: boolean = false;
