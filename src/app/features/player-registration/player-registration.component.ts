@@ -21,6 +21,7 @@ export class PlayerRegistrationComponent {
 
   divideIntoTables() {
     this.playerService.divideIntoTables();
+    this.playerService.resetDice();
     this.showTables = true;
   }
 
@@ -37,6 +38,7 @@ export class PlayerRegistrationComponent {
   }
 
   backToRegistration() {
+    this.playerService.resetDice();
     this.showTables = false;
   }
 }

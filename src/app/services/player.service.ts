@@ -12,8 +12,8 @@ interface Player {
 interface Table {
   players: Player[];
   type?: TableType;
-  rolled?: boolean;
   maxRoll?: number | null;
+  teams?: { leftTower: Player[]; emperor: Player[]; rightTower: Player[] };
 }
 
 @Injectable({
@@ -63,11 +63,7 @@ export class PlayerService {
         });
         break;
       case 6:
-        this.tableOptions.push(
-          TableType.Standard,
-          TableType.EmperorTeam1,
-          TableType.EmperorTeam2
-        );
+        this.tableOptions.push(TableType.Standard, TableType.Emperor);
         break;
       default:
         for (let i = 0; i < playerCount; i += 4) {
@@ -88,6 +84,7 @@ export class PlayerService {
   }
 
   setTableOption(option: TableType) {
+    this.resetDice();
     this.tables = [];
     const playerCount = this.players.length;
 
@@ -118,15 +115,19 @@ export class PlayerService {
           );
         }
         break;
-      case TableType.EmperorTeam1:
-      case TableType.EmperorTeam2:
+      case TableType.Emperor:
         if (playerCount === 6) {
-          const team1 = this.players.slice(0, 3);
-          const team2 = this.players.slice(3, 6);
-          this.tables.push(
-            { players: this.assignSeats(team1), type: TableType.EmperorTeam1 },
-            { players: this.assignSeats(team2), type: TableType.EmperorTeam2 }
-          );
+          const shuffledPlayers = this.shuffleArray([...this.players]);
+          const teams = {
+            leftTower: [shuffledPlayers[0], shuffledPlayers[3]],
+            emperor: [shuffledPlayers[1], shuffledPlayers[4]],
+            rightTower: [shuffledPlayers[2], shuffledPlayers[5]],
+          };
+          this.tables.push({
+            players: shuffledPlayers,
+            type: TableType.Emperor,
+            teams,
+          });
         }
         break;
     }
@@ -142,17 +143,27 @@ export class PlayerService {
   }
 
   rollDiceForTable(table: Table) {
-    if (!table.rolled) {
-      table.players.forEach((player) => {
-        player.roll = Math.floor(Math.random() * 20) + 1;
-      });
-      table.rolled = true;
+    table.players.forEach((player) => {
+      player.roll = Math.floor(Math.random() * 20) + 1;
+    });
 
-      // Determina il massimo valore dei dadi per il tavolo
-      table.maxRoll = Math.max(
-        ...table.players.map((player) => player.roll || 0)
-      );
-    }
+    // Determina il massimo valore dei dadi per il tavolo
+    table.maxRoll = Math.max(
+      ...table.players.map((player) => player.roll || 0)
+    );
+  }
+
+  resetDice() {
+    this.players.forEach((player) => {
+      player.roll = undefined;
+    });
+
+    this.tables.forEach((table) => {
+      table.players.forEach((player) => {
+        player.roll = undefined;
+      });
+      table.maxRoll = undefined;
+    });
   }
 
   getTables(): Table[] {
@@ -165,5 +176,13 @@ export class PlayerService {
 
   deletePlayer(index: number) {
     this.players.splice(index, 1);
+  }
+
+  shuffleArray(array: any[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 }

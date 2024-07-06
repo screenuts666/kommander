@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-card',
