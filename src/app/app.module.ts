@@ -7,7 +7,6 @@ import { PlayerRegistrationComponent } from './features/player-registration/play
 import { FormsModule } from '@angular/forms';
 import { TableManagementComponent } from './features/table-management/table-management.component';
 import { ScoreTrackingComponent } from './features/score-tracking/score-tracking.component';
-import { MatchHistoryComponent } from './features/match-history/match-history.component';
 import { CardComponent } from './shared/card/card.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { CardComponent } from './shared/card/card.component';
     PlayerRegistrationComponent,
     TableManagementComponent,
     ScoreTrackingComponent,
-    MatchHistoryComponent,
     CardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
