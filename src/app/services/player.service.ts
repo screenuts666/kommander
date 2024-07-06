@@ -153,6 +153,10 @@ export class PlayerService {
     return this.tables;
   }
 
+  getTableOptions(): TableType[] {
+    return this.tableOptions;
+  }
+
   deletePlayer(index: number) {
     this.players.splice(index, 1);
   }
