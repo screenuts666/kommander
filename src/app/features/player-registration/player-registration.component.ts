@@ -38,6 +38,10 @@ export class PlayerRegistrationComponent {
     this.playerService.deletePlayer(index);
   }
 
+  rollDiceForTable(table: any) {
+    this.playerService.rollDiceForTable(table);
+  }
+
   get players() {
     return this.playerService.getPlayers();
   }
