@@ -4,16 +4,51 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ImageService {
-  private images: string[] = [
-    'https://via.placeholder.com/150/FF0000',
-    'https://via.placeholder.com/150/00FF00',
-    'https://via.placeholder.com/150/0000FF',
-    'https://via.placeholder.com/150/FFFF00',
-    'https://via.placeholder.com/150/FF00FF',
-    'https://via.placeholder.com/150/00FFFF',
+  private emojis: string[] = [
+    '🧙‍♂️', // Wizard
+    '🧝‍♂️', // Elf
+    '🐉', // Dragon
+    '⚔️', // Crossed Swords
+    '🪄', // Magic Wand
+    '🧟‍♂️', // Zombie
+    '🦄', // Unicorn
+    '🏰', // Castle
+    '👹', // Ogre
+    '🧞‍♂️', // Genie
+    '🧛‍♂️', // Vampire
+    '🧜‍♂️', // Merman
+    '🦸‍♂️', // Superhero
+    '🦹‍♂️', // Supervillain
+    '🧚‍♂️', // Fairy
+    '🌌', // Milky Way
+    '💫', // Dizzy
+    '✨', // Sparkles
+    '🔥', // Fire
+    '⚡', // High Voltage
+    '❄️', // Snowflake
+    '☄️', // Comet
+    '🌪️', // Tornado
+    '🌈', // Rainbow
+    '🪐', // Ringed Planet
+    '🧩', // Puzzle Piece
+    '🎲', // Game Die
+    '🧺', // Basket
+    '🏹', // Bow and Arrow
+    '🎨', // Artist Palette
   ];
 
+  private remainingEmojis: string[] = [...this.emojis];
+
   getRandomImage(): string {
-    return this.images[Math.floor(Math.random() * this.images.length)];
+    if (this.remainingEmojis.length === 0) {
+      this.resetEmojis();
+    }
+    const randomIndex = Math.floor(Math.random() * this.remainingEmojis.length);
+    const selectedEmoji = this.remainingEmojis.splice(randomIndex, 1)[0];
+    return selectedEmoji;
+  }
+
+  resetEmojis() {
+    this.remainingEmojis = [...this.emojis];
   }
 }

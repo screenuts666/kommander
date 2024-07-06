@@ -11,23 +11,31 @@ export class PlayerRegistrationComponent {
   playerName: string = '';
   tables: any[] = [];
   tableOptions: TableType[] = [];
+  showTables: boolean = false;
 
   constructor(private playerService: PlayerService) {}
 
   registerPlayer() {
-    this.playerService.addPlayer(this.playerName);
-    this.playerName = '';
+    if (this.playerName.trim()) {
+      this.playerService.addPlayer(this.playerName);
+      this.playerName = '';
+    }
   }
 
   divideIntoTables() {
     const result = this.playerService.divideIntoTables();
     this.tables = result.tables;
     this.tableOptions = result.tableOptions;
+    this.showTables = true;
   }
 
   setTableOption(option: TableType) {
     this.playerService.setTableOption(option);
     this.tables = this.playerService.getTables();
+  }
+
+  deletePlayer(index: number) {
+    this.playerService.deletePlayer(index);
   }
 
   get players() {

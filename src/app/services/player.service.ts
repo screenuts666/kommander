@@ -29,6 +29,10 @@ export class PlayerService {
     }
   }
 
+  deletePlayer(index: number) {
+    this.players.splice(index, 1);
+  }
+
   getPlayers(): Player[] {
     return this.players;
   }
