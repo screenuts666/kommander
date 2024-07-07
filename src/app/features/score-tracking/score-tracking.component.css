@@ -1,0 +1,64 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  z-index: 9999;
+}
+
+.score-tracking-fullscreen {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+.score-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  font-weight: bold;
+  color: black;
+  position: relative;
+  border: 2px solid #000;
+  box-sizing: border-box;
+}
+
+.score-display span {
+  transform: rotate(90deg);
+}
+
+.player-1 {
+  background-color: #4caf50; /* Green */
+}
+
+.player-2 {
+  background-color: #ffc107; /* Yellow */
+}
+
+.player-3 {
+  background-color: #ff5722; /* Orange */
+}
+
+.player-4 {
+  background-color: #f44336; /* Red */
+}
+
+.exit-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

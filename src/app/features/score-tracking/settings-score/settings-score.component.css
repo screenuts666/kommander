@@ -1,0 +1,67 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333; /* Darker color for the heading */
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #555; /* Darker color for labels */
+}
+
+.btn-group-toggle .btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc; /* Light border */
+  background-color: #f9f9f9; /* Light background color */
+  color: #333; /* Darker text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btn-group-toggle .btn:hover {
+  background-color: #e6e6e6; /* Slightly darker background on hover */
+}
+
+.btn-group-toggle .btn.active {
+  background-color: #007bff; /* Blue background for active buttons */
+  color: white;
+  border-color: #007bff;
+}
+
+.btn-primary {
+  background-color: #f0932b;
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
+  margin: auto; /* Center the button */
+  display: block;
+  width: 50%; /* Make the button wider */
+}
+
+.btn-primary:hover {
+  background-color: #d17b1e;
+}
+
+.btn i {
+  margin-right: 0.5rem;
+}
+
+.orientation-icon {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: auto;
+}

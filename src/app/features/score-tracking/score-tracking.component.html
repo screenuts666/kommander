@@ -1,1 +1,11 @@
-<p>score-tracking works!</p>
+<app-settings-score
+  *ngIf="!isTracking"
+  (settingsSubmitted)="onSettingsSubmitted($event)"
+></app-settings-score>
+<app-fullscreen-score
+  *ngIf="isTracking"
+  [numberOfPlayers]="settings.numberOfPlayers"
+  [points]="settings.points"
+  [orientation]="settings.orientation"
+  (exitFullScreen)="onExitFullScreen()"
+></app-fullscreen-score>

@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { TableManagementComponent } from './features/table-management/table-management.component';
 import { ScoreTrackingComponent } from './features/score-tracking/score-tracking.component';
 import { CardComponent } from './shared/card/card.component';
+import { SettingsScoreComponent } from './features/score-tracking/settings-score/settings-score.component';
+import { FullscreenScoreComponent } from './features/score-tracking/fullscreen-score/fullscreen-score.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { CardComponent } from './shared/card/card.component';
     TableManagementComponent,
     ScoreTrackingComponent,
     CardComponent,
+    SettingsScoreComponent,
+    FullscreenScoreComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
