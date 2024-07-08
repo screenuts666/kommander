@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { PlayerService } from '../../services/player.service';
 export class PlayerRegistrationComponent {
   playerName: string = '';
   showTables: boolean = false;
+
+  @ViewChild('playerNameInput') playerNameInput!: ElementRef;
 
   constructor(private playerService: PlayerService) {}
 
@@ -29,7 +31,12 @@ export class PlayerRegistrationComponent {
     if (this.playerName.trim()) {
       this.playerService.addPlayer(this.playerName);
       this.playerName = '';
+      this.focusPlayerNameInput();
     }
+  }
+
+  focusPlayerNameInput() {
+    this.playerNameInput.nativeElement.focus();
   }
 
   divideIntoTables() {

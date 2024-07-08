@@ -187,7 +187,6 @@ export class PlayerService {
   shuffleArray(array: any[]): any[] {
     let seed = this.generateRandomSeed();
 
-    // Implementazione di una funzione di mescolamento con seed
     function random() {
       var x = Math.sin(seed++) * 10000;
       return x - Math.floor(x);
