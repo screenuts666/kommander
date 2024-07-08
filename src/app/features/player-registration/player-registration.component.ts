@@ -18,11 +18,11 @@ export class PlayerRegistrationComponent {
   getPlayerMock(): void {
     const mockPlayerList = [
       'Jack',
-      'Pernice',
-      'Cosma',
+      'Scafetti',
+      'Ruco',
       'Giuseppe',
       'Thomas',
-      'Jacopo',
+      'Simone DivinAmore',
     ];
     mockPlayerList.map((ele) => this.playerService.addPlayer(ele));
   }
