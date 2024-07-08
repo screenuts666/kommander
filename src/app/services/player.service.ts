@@ -51,14 +51,14 @@ export class PlayerService {
       case 5:
       case 7:
         this.tables.push({
-          players: this.assignSeats(this.players),
+          players: this.assignSeats(this.shuffleArray([...this.players])),
           type: TableType.Diamond,
         });
         break;
       case 3:
       case 4:
         this.tables.push({
-          players: this.assignSeats(this.players),
+          players: this.assignSeats(this.shuffleArray([...this.players])),
           type: TableType.Standard,
         });
         break;
@@ -67,7 +67,10 @@ export class PlayerService {
         break;
       default:
         for (let i = 0; i < playerCount; i += 4) {
-          const tablePlayers = this.players.slice(i, i + 4);
+          const tablePlayers = this.shuffleArray([...this.players]).slice(
+            i,
+            i + 4
+          );
           if (tablePlayers.length > 1) {
             this.tables.push({
               players: this.assignSeats(tablePlayers),
@@ -87,12 +90,13 @@ export class PlayerService {
     this.resetDice();
     this.tables = [];
     const playerCount = this.players.length;
+    const shuffledPlayers = this.shuffleArray([...this.players]);
 
     switch (option) {
       case TableType.AllVsAll:
         if (playerCount === 5) {
           this.tables.push({
-            players: this.assignSeats(this.players),
+            players: this.assignSeats(shuffledPlayers),
             type: TableType.AllVsAll,
           });
         }
@@ -100,15 +104,15 @@ export class PlayerService {
       case TableType.Diamond:
         if (playerCount === 5 || playerCount === 7) {
           this.tables.push({
-            players: this.assignSeats(this.players),
+            players: this.assignSeats(shuffledPlayers),
             type: TableType.Diamond,
           });
         }
         break;
       case TableType.Standard:
         if (playerCount === 6) {
-          const table1 = this.players.slice(0, 3);
-          const table2 = this.players.slice(3, 6);
+          const table1 = shuffledPlayers.slice(0, 3);
+          const table2 = shuffledPlayers.slice(3, 6);
           this.tables.push(
             { players: this.assignSeats(table1), type: TableType.Standard },
             { players: this.assignSeats(table2), type: TableType.Standard }
@@ -117,7 +121,6 @@ export class PlayerService {
         break;
       case TableType.Emperor:
         if (playerCount === 6) {
-          const shuffledPlayers = this.shuffleArray([...this.players]);
           const teams = {
             leftTower: [shuffledPlayers[0], shuffledPlayers[3]],
             emperor: [shuffledPlayers[1], shuffledPlayers[4]],
@@ -134,12 +137,10 @@ export class PlayerService {
   }
 
   assignSeats(players: Player[]): Player[] {
-    return players
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((player, index) => {
-        player.seatNumber = index + 1;
-        return player;
-      });
+    return players.map((player, index) => {
+      player.seatNumber = index + 1;
+      return player;
+    });
   }
 
   rollDiceForTable(table: Table) {
@@ -178,9 +179,22 @@ export class PlayerService {
     this.players.splice(index, 1);
   }
 
-  shuffleArray(array: any[]) {
+  // Funzione per generare un seed casuale
+  private generateRandomSeed(): number {
+    return Math.floor(Math.random() * 1000000);
+  }
+
+  shuffleArray(array: any[]): any[] {
+    let seed = this.generateRandomSeed();
+
+    // Implementazione di una funzione di mescolamento con seed
+    function random() {
+      var x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    }
+
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
