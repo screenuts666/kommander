@@ -3,7 +3,11 @@
   [ngClass]="{
     vertical: orientation === OrientationEnum.DEFAULT,
     horizontal: orientation === OrientationEnum.DIAGONAL,
-    'commander-mode': isCommanderMode
+    'commander-mode': isCommanderMode,
+    'layout-1': players.length === 1,
+    'layout-2': players.length === 2,
+    'layout-3': players.length === 3,
+    'layout-4': players.length === 4
   }"
 >
   <ng-container *ngIf="orientation === OrientationEnum.DEFAULT">
@@ -25,9 +29,13 @@
 
   <button
     class="exit-button btn btn-secondary position-absolute top-50 start-50 translate-middle"
-    (click)="showConfirmDialog = true"
+    (click)="
+      isCommanderMode
+        ? closeCommanderDamageTracker()
+        : (showConfirmDialog = true)
+    "
   >
-    <i class="fas fa-cog"></i>
+    <i class="fas" [ngClass]="isCommanderMode ? 'fa-heart' : 'fa-cog'"></i>
   </button>
 
   <div *ngIf="showConfirmDialog" class="overlay-dialog">
