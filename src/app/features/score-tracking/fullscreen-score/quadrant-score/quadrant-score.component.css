@@ -54,14 +54,14 @@
 .left-layout .btn-left,
 .left-layout .btn-right,
 .left-layout .icon {
-  margin: 0 40px;
+  margin: 0 20px;
 }
 
 .right-layout .btn-commander-damage,
 .right-layout .btn-left,
 .right-layout .btn-right,
 .right-layout .icon {
-  margin: 0 40px;
+  margin: 0 20px;
 }
 
 .icon {
@@ -134,6 +134,7 @@
 @media (max-width: 768px) {
   .quadrant-score {
     flex-direction: column;
+    padding: 5px;
   }
 
   .left-layout,
@@ -145,14 +146,14 @@
   .btn-left,
   .btn-right,
   .icon {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 
   .btn-points,
   .btn-commander-damage {
     width: 30px;
     height: 30px;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .points-wrapper {
