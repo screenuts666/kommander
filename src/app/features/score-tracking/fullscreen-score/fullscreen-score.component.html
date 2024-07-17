@@ -21,6 +21,7 @@
       [icon]="player.icon"
       [backgroundColor]="player.color"
       [orientation]="getOrientation(i)"
+      [position]="i % 2 === 0 ? 'left' : 'right'"
       (increasePoints)="increasePoints(i)"
       (decreasePoints)="decreasePoints(i)"
       (openCommanderDamageTrackerEmit)="openCommanderDamageTracker(i)"

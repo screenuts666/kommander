@@ -102,13 +102,13 @@ export class FullscreenScoreComponent {
     if (this.orientation === this.OrientationEnum.DEFAULT) {
       switch (index) {
         case 0:
-          return 'rotated-left';
+          return 'rotated-right';
         case 1:
-          return 'rotated-right';
-        case 2:
           return 'rotated-left';
-        case 3:
+        case 2:
           return 'rotated-right';
+        case 3:
+          return 'rotated-left';
       }
     }
     return 'default';

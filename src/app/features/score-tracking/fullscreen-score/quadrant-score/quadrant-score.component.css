@@ -10,6 +10,7 @@
   height: 100%;
 }
 
+/* Orientations */
 .quadrant-score.default-orientation .points-wrapper,
 .quadrant-score.default-orientation .btn-left,
 .quadrant-score.default-orientation .btn-right,
@@ -42,26 +43,40 @@
   transform: rotate(180deg);
 }
 
+/* Layouts */
+.left-layout,
+.right-layout {
+  display: flex;
+  align-items: center;
+}
+
+.left-layout .btn-commander-damage,
+.left-layout .btn-left,
+.left-layout .btn-right,
+.left-layout .icon {
+  margin: 0 5px;
+}
+
+.right-layout .btn-commander-damage,
+.right-layout .btn-left,
+.right-layout .btn-right,
+.right-layout .icon {
+  margin: 0 5px;
+}
+
 .icon {
-  position: absolute;
-  top: 40%;
-  font-size: 1.5rem; /* Reduced size */
-  width: 30px; /* Reduced size */
-  height: 30px; /* Reduced size */
+  font-size: 1.5rem;
+  width: 30px;
+  height: 30px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
-  transform: translateY(-100%);
 }
 
 .points-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,44 +84,29 @@
 
 .points {
   text-align: center;
-  font-size: 4rem; /* Reduced size */
+  font-size: 4rem;
   font-weight: bold;
   color: white;
-  z-index: 1;
 }
 
 .btn-points {
   width: 25%;
   height: 25%;
-  font-size: 1.5rem; /* Reduced size */
+  font-size: 1.5rem;
   margin: 0;
   border: none;
   background: inherit;
   color: rgba(255, 255, 255, 0.7);
-  z-index: 2;
-}
-
-.btn-left {
-  position: absolute;
-  left: -30px; /* Adjust as necessary */
-}
-
-.btn-right {
-  position: absolute;
-  right: -30px; /* Adjust as necessary */
 }
 
 .btn-commander-damage {
-  position: absolute;
-  bottom: -30px; /* Adjust as necessary */
   width: 25%;
   height: 25%;
-  font-size: 1.5rem; /* Reduced size */
+  font-size: 1.5rem;
   margin: 0;
   border: none;
   background: inherit;
   color: rgba(255, 255, 255, 0.7);
-  z-index: 2;
 }
 
 /* Styles for the commander damage tracker modal */

@@ -4,24 +4,56 @@
     'default-orientation': orientation === 'default',
     'rotated-left': orientation === 'rotated-left',
     'rotated-right': orientation === 'rotated-right',
-    'rotated-up': orientation === 'rotated-up'
+    'rotated-up': orientation === 'rotated-up',
+    'player-left': position === 'left',
+    'player-right': position === 'right'
   }"
   [ngStyle]="{ 'background-color': backgroundColor }"
 >
-  <div class="icon">{{ icon }}</div>
-  <button class="btn btn-points btn-left" (click)="onDecreasePoints()">
-    -
-  </button>
-  <div class="points-wrapper">
-    <div class="points">{{ points }}</div>
-  </div>
-  <button class="btn btn-points btn-right" (click)="onIncreasePoints()">
-    +
-  </button>
-  <button
-    class="btn btn-commander-damage"
-    (click)="openCommanderDamageTracker()"
-  >
-    <i class="fas fa-skull"></i>
-  </button>
+  <ng-container *ngIf="position === 'left'; else rightLayout">
+    <div class="left-layout">
+      <button
+        class="btn btn-commander-damage"
+        (click)="openCommanderDamageTracker()"
+      >
+        <i class="fas fa-skull"></i>
+      </button>
+
+      <button class="btn btn-points btn-left" (click)="onDecreasePoints()">
+        -
+      </button>
+      <div class="points-wrapper">
+        <div class="points">{{ points }}</div>
+      </div>
+
+      <button class="btn btn-points btn-right" (click)="onIncreasePoints()">
+        +
+      </button>
+
+      <div class="icon">{{ icon }}</div>
+    </div>
+  </ng-container>
+
+  <ng-template #rightLayout>
+    <div class="right-layout">
+      <div class="icon">{{ icon }}</div>
+      <button class="btn btn-points btn-right" (click)="onIncreasePoints()">
+        +
+      </button>
+      <div class="points-wrapper">
+        <div class="points">{{ points }}</div>
+      </div>
+
+      <button class="btn btn-points btn-left" (click)="onDecreasePoints()">
+        -
+      </button>
+
+      <button
+        class="btn btn-commander-damage"
+        (click)="openCommanderDamageTracker()"
+      >
+        <i class="fas fa-skull"></i>
+      </button>
+    </div>
+  </ng-template>
 </div>
