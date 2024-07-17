@@ -26,6 +26,11 @@ export class FullscreenScoreComponent {
     '#130f40', // Dark Blue
   ];
 
+  isCommanderMode = false;
+  trackingPlayerIndex: number | null = null;
+  commanderDamage: number[][] = [];
+  showConfirmDialog = false;
+
   constructor(
     @Inject(DOCUMENT) private documentService: any,
     private imageService: ImageService
@@ -37,6 +42,9 @@ export class FullscreenScoreComponent {
       icon: this.imageService.getRandomImage(),
       color: this.playerColors[index % this.playerColors.length],
     }));
+    this.commanderDamage = Array.from({ length: this.numberOfPlayers }, () =>
+      Array(this.numberOfPlayers).fill(0)
+    );
     this.fullScreen();
   }
 
@@ -67,12 +75,82 @@ export class FullscreenScoreComponent {
   }
 
   increasePoints(index: number) {
-    this.players[index].points++;
+    if (this.isCommanderMode) {
+      this.commanderDamage[this.trackingPlayerIndex!][index]++;
+      this.players[this.trackingPlayerIndex!].points--;
+    } else {
+      this.players[index].points++;
+    }
   }
 
   decreasePoints(index: number) {
-    if (this.players[index].points > 0) {
-      this.players[index].points--;
+    if (this.isCommanderMode) {
+      if (this.commanderDamage[this.trackingPlayerIndex!][index] > 0) {
+        this.commanderDamage[this.trackingPlayerIndex!][index]--;
+        this.players[this.trackingPlayerIndex!].points++;
+      }
+    } else {
+      if (this.players[index].points > 0) {
+        this.players[index].points--;
+      }
     }
+  }
+
+  getOrientation(
+    index: number
+  ): 'default' | 'rotated-left' | 'rotated-right' | 'rotated-up' {
+    if (this.orientation === this.OrientationEnum.DEFAULT) {
+      switch (index) {
+        case 0:
+          return 'rotated-left';
+        case 1:
+          return 'rotated-right';
+        case 2:
+          return 'rotated-left';
+        case 3:
+          return 'rotated-right';
+      }
+    }
+    return 'default';
+  }
+
+  openCommanderDamageTracker(index: number) {
+    this.trackingPlayerIndex = index;
+    if (!this.isCommanderMode) {
+      this.isCommanderMode = true;
+      this.players.forEach((player) => (player.color = '#555')); // Set all backgrounds to a uniform color
+    } else {
+      this.closeCommanderDamageTracker();
+    }
+  }
+
+  closeCommanderDamageTracker() {
+    this.isCommanderMode = false;
+    this.trackingPlayerIndex = null;
+    this.players.forEach(
+      (player, index) =>
+        (player.color = this.playerColors[index % this.playerColors.length])
+    ); // Reset colors
+  }
+
+  confirmExit(reset: boolean) {
+    this.showConfirmDialog = false;
+    if (reset) {
+      // Reset everything
+      this.players.forEach((player) => (player.points = this.points));
+      this.commanderDamage = Array.from({ length: this.numberOfPlayers }, () =>
+        Array(this.numberOfPlayers).fill(0)
+      );
+      this.leaveFullScreen();
+    } else {
+      this.resetPlayerPoints();
+    }
+  }
+
+  resetPlayerPoints(): void {
+    this.players.forEach((player) => (player.points = this.points));
+    this.commanderDamage = Array.from({ length: this.numberOfPlayers }, () =>
+      Array(this.numberOfPlayers).fill(0)
+    );
   }
 }

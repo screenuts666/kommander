@@ -2,95 +2,46 @@
   class="score-tracking-fullscreen overlay"
   [ngClass]="{
     vertical: orientation === OrientationEnum.DEFAULT,
-    horizontal: orientation === OrientationEnum.DIAGONAL
+    horizontal: orientation === OrientationEnum.DIAGONAL,
+    'commander-mode': isCommanderMode
   }"
 >
   <ng-container *ngIf="orientation === OrientationEnum.DEFAULT">
-    <div
-      class="score-display"
+    <app-quadrant-score
       *ngFor="let player of players; let i = index"
-      [ngStyle]="{ 'background-color': player.color }"
-    >
-      <div class="icon">{{ player.icon }}</div>
-      <button class="btn btn-points btn-left" (click)="decreasePoints(i)">
-        -
-      </button>
-      <div class="points">
-        <span>{{ player.points }}</span>
-      </div>
-      <button class="btn btn-points btn-right" (click)="increasePoints(i)">
-        +
-      </button>
-    </div>
-  </ng-container>
-
-  <ng-container *ngIf="orientation === OrientationEnum.DIAGONAL">
-    <div
-      class="score-display player-1"
-      [ngStyle]="{ 'background-color': players[0]?.color }"
-    >
-      <div class="icon">{{ players[0]?.icon }}</div>
-      <button class="btn btn-points btn-left" (click)="decreasePoints(0)">
-        -
-      </button>
-      <div class="points">
-        <span>{{ players[0]?.points }}</span>
-      </div>
-      <button class="btn btn-points btn-right" (click)="increasePoints(0)">
-        +
-      </button>
-    </div>
-    <div
-      class="score-display player-2"
-      [ngStyle]="{ 'background-color': players[1]?.color }"
-    >
-      <div class="icon">{{ players[1]?.icon }}</div>
-      <button class="btn btn-points btn-left" (click)="decreasePoints(1)">
-        -
-      </button>
-      <div class="points">
-        <span>{{ players[1]?.points }}</span>
-      </div>
-      <button class="btn btn-points btn-right" (click)="increasePoints(1)">
-        +
-      </button>
-    </div>
-    <div
-      class="score-display player-3"
-      [ngStyle]="{ 'background-color': players[2]?.color }"
-    >
-      <div class="icon">{{ players[2]?.icon }}</div>
-      <button class="btn btn-points btn-left" (click)="decreasePoints(2)">
-        -
-      </button>
-      <div class="points">
-        <span>{{ players[2]?.points }}</span>
-      </div>
-      <button class="btn btn-points btn-right" (click)="increasePoints(2)">
-        +
-      </button>
-    </div>
-    <div
-      class="score-display player-4"
-      [ngStyle]="{ 'background-color': players[3]?.color }"
-    >
-      <div class="icon">{{ players[3]?.icon }}</div>
-      <button class="btn btn-points btn-left" (click)="decreasePoints(3)">
-        -
-      </button>
-      <div class="points">
-        <span>{{ players[3]?.points }}</span>
-      </div>
-      <button class="btn btn-points btn-right" (click)="increasePoints(3)">
-        +
-      </button>
-    </div>
+      [points]="
+        isCommanderMode
+          ? commanderDamage[trackingPlayerIndex!][i]
+          : player.points
+      "
+      [icon]="player.icon"
+      [backgroundColor]="player.color"
+      [orientation]="getOrientation(i)"
+      (increasePoints)="increasePoints(i)"
+      (decreasePoints)="decreasePoints(i)"
+      (openCommanderDamageTrackerEmit)="openCommanderDamageTracker(i)"
+    ></app-quadrant-score>
   </ng-container>
 
   <button
     class="exit-button btn btn-secondary position-absolute top-50 start-50 translate-middle"
-    (click)="leaveFullScreen()"
+    (click)="showConfirmDialog = true"
   >
     <i class="fas fa-cog"></i>
   </button>
+
+  <div *ngIf="showConfirmDialog" class="overlay-dialog">
+    <div class="confirm-dialog">
+      <h3>Are you sure?</h3>
+      <button class="btn btn-warning" (click)="confirmExit(false)">
+        Restart Game
+      </button>
+      <button class="btn btn-danger" (click)="confirmExit(true)">
+        Exit and Reset
+      </button>
+      <button class="btn btn-secondary" (click)="showConfirmDialog = false">
+        Cancel
+      </button>
+    </div>
+  </div>
 </div>

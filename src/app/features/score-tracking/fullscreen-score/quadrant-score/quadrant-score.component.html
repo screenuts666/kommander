@@ -1,0 +1,27 @@
+<div
+  class="quadrant-score"
+  [ngClass]="{
+    'default-orientation': orientation === 'default',
+    'rotated-left': orientation === 'rotated-left',
+    'rotated-right': orientation === 'rotated-right',
+    'rotated-up': orientation === 'rotated-up'
+  }"
+  [ngStyle]="{ 'background-color': backgroundColor }"
+>
+  <div class="icon">{{ icon }}</div>
+  <button class="btn btn-points btn-left" (click)="onDecreasePoints()">
+    -
+  </button>
+  <div class="points-wrapper">
+    <div class="points">{{ points }}</div>
+  </div>
+  <button class="btn btn-points btn-right" (click)="onIncreasePoints()">
+    +
+  </button>
+  <button
+    class="btn btn-commander-damage"
+    (click)="openCommanderDamageTracker()"
+  >
+    <i class="fas fa-skull"></i>
+  </button>
+</div>

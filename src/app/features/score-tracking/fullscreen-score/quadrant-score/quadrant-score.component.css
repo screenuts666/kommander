@@ -1,0 +1,131 @@
+.quadrant-score {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.quadrant-score.default-orientation .points-wrapper,
+.quadrant-score.default-orientation .btn-left,
+.quadrant-score.default-orientation .btn-right,
+.quadrant-score.default-orientation .btn-commander-damage,
+.quadrant-score.default-orientation .icon {
+  transform: none;
+}
+
+.quadrant-score.rotated-left .points-wrapper,
+.quadrant-score.rotated-left .btn-left,
+.quadrant-score.rotated-left .btn-right,
+.quadrant-score.rotated-left .btn-commander-damage,
+.quadrant-score.rotated-left .icon {
+  transform: rotate(-90deg);
+}
+
+.quadrant-score.rotated-right .points-wrapper,
+.quadrant-score.rotated-right .btn-left,
+.quadrant-score.rotated-right .btn-right,
+.quadrant-score.rotated-right .btn-commander-damage,
+.quadrant-score.rotated-right .icon {
+  transform: rotate(90deg);
+}
+
+.quadrant-score.rotated-up .points-wrapper,
+.quadrant-score.rotated-up .btn-left,
+.quadrant-score.rotated-up .btn-right,
+.quadrant-score.rotated-up .btn-commander-damage,
+.quadrant-score.rotated-up .icon {
+  transform: rotate(180deg);
+}
+
+.icon {
+  position: absolute;
+  top: 40%;
+  font-size: 1.5rem; /* Reduced size */
+  width: 30px; /* Reduced size */
+  height: 30px; /* Reduced size */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  transform: translateY(-100%);
+}
+
+.points-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.points {
+  text-align: center;
+  font-size: 4rem; /* Reduced size */
+  font-weight: bold;
+  color: white;
+  z-index: 1;
+}
+
+.btn-points {
+  width: 25%;
+  height: 25%;
+  font-size: 1.5rem; /* Reduced size */
+  margin: 0;
+  border: none;
+  background: inherit;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+
+.btn-left {
+  position: absolute;
+  left: -30px; /* Adjust as necessary */
+}
+
+.btn-right {
+  position: absolute;
+  right: -30px; /* Adjust as necessary */
+}
+
+.btn-commander-damage {
+  position: absolute;
+  bottom: -30px; /* Adjust as necessary */
+  width: 25%;
+  height: 25%;
+  font-size: 1.5rem; /* Reduced size */
+  margin: 0;
+  border: none;
+  background: inherit;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+
+/* Styles for the commander damage tracker modal */
+.commander-damage-tracker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.commander-damage-tracker h3 {
+  margin-top: 0;
+}
+
+.commander-damage-tracker input {
+  width: 50px;
+  margin-left: 10px;
+}

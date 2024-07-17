@@ -10,6 +10,7 @@ import { ScoreTrackingComponent } from './features/score-tracking/score-tracking
 import { CardComponent } from './shared/card/card.component';
 import { SettingsScoreComponent } from './features/score-tracking/settings-score/settings-score.component';
 import { FullscreenScoreComponent } from './features/score-tracking/fullscreen-score/fullscreen-score.component';
+import { QuadrantScoreComponent } from './features/score-tracking/fullscreen-score/quadrant-score/quadrant-score.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FullscreenScoreComponent } from './features/score-tracking/fullscreen-s
     CardComponent,
     SettingsScoreComponent,
     FullscreenScoreComponent,
+    QuadrantScoreComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
