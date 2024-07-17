@@ -54,14 +54,14 @@
 .left-layout .btn-left,
 .left-layout .btn-right,
 .left-layout .icon {
-  margin: 0 5px;
+  margin: 0 40px;
 }
 
 .right-layout .btn-commander-damage,
 .right-layout .btn-left,
 .right-layout .btn-right,
 .right-layout .icon {
-  margin: 0 5px;
+  margin: 0 40px;
 }
 
 .icon {
