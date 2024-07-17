@@ -129,3 +129,39 @@
   width: 50px;
   margin-left: 10px;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .quadrant-score {
+    flex-direction: column;
+  }
+
+  .left-layout,
+  .right-layout {
+    flex-direction: column;
+  }
+
+  .btn-commander-damage,
+  .btn-left,
+  .btn-right,
+  .icon {
+    margin: 10px 0;
+  }
+
+  .btn-points,
+  .btn-commander-damage {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+
+  .points-wrapper {
+    font-size: 2rem;
+  }
+
+  .icon {
+    font-size: 1rem;
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -93,3 +93,40 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .score-tracking-fullscreen.vertical,
+  .score-tracking-fullscreen.horizontal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .layout-2,
+  .layout-3,
+  .layout-4 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .quadrant-score {
+    flex-direction: column;
+  }
+
+  .btn-points,
+  .btn-commander-damage {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .points-wrapper {
+    font-size: 2rem;
+  }
+
+  .icon {
+    font-size: 1rem;
+    width: 20px;
+    height: 20px;
+  }
+}
